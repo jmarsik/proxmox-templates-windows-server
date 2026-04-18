@@ -1,0 +1,26 @@
+# pixi environments
+.pixi/*
+!.pixi/config.toml
+
+.remember
+
+# Packer
+packer_cache/
+*.log
+crash.log
+manifest.json
+
+# Real pkrvars (keep .example only)
+pkrvars/*.pkrvars.hcl
+!pkrvars/*.pkrvars.hcl.example
+
+# VirtIO WinPE drivers (binary blobs from virtio-win ISO)
+winpe-drivers/*
+!winpe-drivers/README.md
+!winpe-drivers/.gitkeep
+
+# Editor / OS
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
