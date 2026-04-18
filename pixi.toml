@@ -2,7 +2,7 @@
 authors = ["Jakub Marsik <jmarsik@fullvent.cz>"]
 channels = ["conda-forge"]
 name = "Lekis-ProxmoxTemplates"
-platforms = ["linux-64", "osx-arm64", "osx-64"]
+platforms = ["linux-64"]
 version = "0.1.0"
 
 [dependencies]
@@ -10,7 +10,6 @@ python = "3.13.*"
 nodejs = "20.18.*"
 packer = ">=1.11"
 jq = "*"
-bash = "*"
 
 [tasks]
 init = "packer init ."

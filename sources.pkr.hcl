@@ -16,12 +16,12 @@ source "proxmox-iso" "win2025_desktop" {
   pool                 = "Templates"
   tags                 = "packer;windows;win${var.vm_os_version};desktop"
 
-  machine  = "q35"
-  bios     = "ovmf"
-  cpu_type = "x86-64-v2-AES"
-  cores    = var.vm_cpu_cores
-  memory   = var.vm_memory
-  os       = "win11"
+  machine    = "q35"
+  bios       = "ovmf"
+  cpu_type   = "x86-64-v2-AES"
+  cores      = var.vm_cpu_cores
+  memory     = var.vm_memory
+  os         = "win11"
   qemu_agent = true
 
   scsi_controller = "virtio-scsi-single"
@@ -39,13 +39,13 @@ source "proxmox-iso" "win2025_desktop" {
   }
 
   disks {
-    type              = "scsi"
-    disk_size         = var.vm_disk_size
-    storage_pool      = var.proxmox_storage_pool
-    format            = "raw"
-    io_thread         = true
-    discard           = true
-    ssd               = true
+    type         = "scsi"
+    disk_size    = var.vm_disk_size
+    storage_pool = var.proxmox_storage_pool
+    format       = "raw"
+    io_thread    = true
+    discard      = true
+    ssd          = true
   }
 
   boot_iso {
@@ -102,12 +102,12 @@ source "proxmox-iso" "win2022_desktop" {
   pool                 = "Templates"
   tags                 = "packer;windows;win${var.vm_os_version};desktop"
 
-  machine  = "q35"
-  bios     = "ovmf"
-  cpu_type = "x86-64-v2-AES"
-  cores    = var.vm_cpu_cores
-  memory   = var.vm_memory
-  os       = "win11"
+  machine    = "q35"
+  bios       = "ovmf"
+  cpu_type   = "x86-64-v2-AES"
+  cores      = var.vm_cpu_cores
+  memory     = var.vm_memory
+  os         = "win11"
   qemu_agent = true
 
   scsi_controller = "virtio-scsi-single"

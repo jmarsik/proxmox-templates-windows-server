@@ -50,7 +50,7 @@ variable "vm_os_version" {
   description = "Windows Server version: 2022 or 2025"
   validation {
     condition     = contains(["2022", "2025"], var.vm_os_version)
-    error_message = "vm_os_version must be 2022 or 2025."
+    error_message = "The vm_os_version must be 2022 or 2025."
   }
 }
 
