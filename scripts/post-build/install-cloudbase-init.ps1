@@ -1,9 +1,13 @@
-# Download + install Cloudbase-Init MSI silently. Service left in Manual state;
-# SetupComplete.cmd flips it to Automatic on first post-sysprep boot.
+# Download + install Cloudbase-Init MSI silently. Service left in Manual state.
+# SetupComplete.cmd sets it to Automatic and starts it on first post-sysprep boot.
 
 $ErrorActionPreference = 'Stop'
 
-$msiUrl = 'https://cloudbase.it/downloads/CloudbaseInitSetup_Stable_x64.msi'
+# Looks like we have to use slightly less stable version, otherwise some plugins don't work correctly.
+# TODO: check later if the stable version works fine and switch to it
+$msiUrl = 'https://cloudbase.it/downloads/CloudbaseInitSetup_x64.msi'
+#$msiUrl = 'https://cloudbase.it/downloads/CloudbaseInitSetup_Stable_x64.msi'
+
 $msiPath = Join-Path $env:TEMP 'CloudbaseInitSetup.msi'
 $logPath = Join-Path $env:TEMP 'CloudbaseInitSetup.log'
 
@@ -16,7 +20,6 @@ $args = @(
     '/i', "`"$msiPath`"",
     '/qn',
     '/l*v', "`"$logPath`"",
-    'LOGGINGSERIALPORTNAME=',
     'INSTALLDIR="C:\Program Files\Cloudbase Solutions\Cloudbase-Init\"'
 )
 $proc = Start-Process -FilePath 'msiexec.exe' -ArgumentList $args -Wait -PassThru
@@ -26,4 +29,4 @@ if ($proc.ExitCode -ne 0) {
 }
 
 Set-Service -Name cloudbase-init -StartupType Manual
-Write-Host "Cloudbase-Init installed; service left in Manual state pending sysprep."
+Write-Host "Cloudbase-Init installed, service left in Manual state."
