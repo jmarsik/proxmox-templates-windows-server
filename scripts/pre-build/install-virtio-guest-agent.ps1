@@ -1,7 +1,8 @@
-# Install VirtIO guest tools (QEMU Guest Agent + drivers) from the mounted
-# virtio-win ISO. Locates the ISO by searching all CD drives.
+# Install VirtIO guest tools (QEMU Guest Agent + drivers) from the mounted virtio-win ISO.
+# Locates the ISO by searching all CD drives.
 
 $ErrorActionPreference = 'Stop'
+
 Write-Host "Searching CD drives for virtio-win-guest-tools.exe..."
 
 $installer = $null
