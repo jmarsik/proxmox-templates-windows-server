@@ -26,8 +26,8 @@
                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
       <ComputerName>*</ComputerName>
       <TimeZone>UTC</TimeZone>
-      <RegisteredOrganization>Packer</RegisteredOrganization>
-      <RegisteredOwner>Administrator</RegisteredOwner>
+      <RegisteredOrganization></RegisteredOrganization>
+      <RegisteredOwner></RegisteredOwner>
     </component>
   </settings>
 
