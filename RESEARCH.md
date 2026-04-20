@@ -175,3 +175,8 @@ Skip **strausmann/homelab-proxmox-templates** — Windows marked "Geplant" (plan
 - [strausmann/homelab-proxmox-templates](https://github.com/strausmann/homelab-proxmox-templates) (Windows planned only)
 - [thundervm/proxmox-windows-template](https://github.com/thundervm/proxmox-windows-template)
 - [GOAD on Proxmox part 2 — Packer templating](https://mayfly277.github.io/posts/GOAD-on-proxmox-part2-packer/)
+
+## Interesting links
+
+- https://schneegans.de/windows/unattend-generator/
+- [Hodgkins — Best Practices with Packer and Windows - Disable WinRM on build completion and then sysprep via shutdown_command](https://hodgkins.io/blog/best-practices-with-packer-and-windows/#disable-winrm-on-build-completion-and-only-enable-it-on-first-boot)
