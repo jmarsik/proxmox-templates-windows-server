@@ -2,9 +2,9 @@ vm_os_version            = "2025"
 vm_os_edition            = "SERVERDATACENTER"
 vm_name                  = "win2025-desktop-tpl"
 vm_template_vmid         = 9025
-vm_disk_size             = "80G"
+vm_disk_size             = "50G"
 vm_cpu_cores             = 2
-vm_memory                = 4096
+vm_memory                = 8192
 
 vm_boot_iso              = "local:iso/SERVER_2025_EVAL_x64FRE_en-us.iso"
 vm_virtio_iso            = "local:iso/virtio-win.iso"

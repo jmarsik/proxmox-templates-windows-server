@@ -42,7 +42,7 @@ variable "vm_boot_iso" {
 
 variable "vm_virtio_iso" {
   type        = string
-  description = "VirtIO drivers ISO reference, e.g. local:iso/virtio-win-0.1.266.iso"
+  description = "VirtIO drivers ISO reference, e.g. local:iso/virtio-win-0.1.285.iso"
 }
 
 variable "vm_os_version" {
@@ -72,7 +72,7 @@ variable "vm_template_vmid" {
 
 variable "vm_disk_size" {
   type        = string
-  default     = "80G"
+  default     = "50G"
   description = "OS disk size"
 }
 
@@ -84,7 +84,7 @@ variable "vm_cpu_cores" {
 
 variable "vm_memory" {
   type        = number
-  default     = 4096
+  default     = 8192
   description = "RAM in MB"
 }
 

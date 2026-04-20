@@ -18,7 +18,7 @@ source "proxmox-iso" "win2025_desktop" {
 
   machine    = "q35"
   bios       = "ovmf"
-  cpu_type   = "x86-64-v2-AES"
+  cpu_type   = "x86-64-v4"
   cores      = var.vm_cpu_cores
   memory     = var.vm_memory
   os         = "win11"
@@ -29,7 +29,7 @@ source "proxmox-iso" "win2025_desktop" {
   efi_config {
     efi_storage_pool  = var.proxmox_storage_pool
     efi_type          = "4m"
-    pre_enrolled_keys = false
+    pre_enrolled_keys = true
   }
 
   network_adapters {
@@ -48,36 +48,45 @@ source "proxmox-iso" "win2025_desktop" {
     ssd          = true
   }
 
+  boot = "order=ide0;scsi0"
+
   boot_iso {
     type         = "ide"
+    index        = 0
     iso_file     = var.vm_boot_iso
     unmount      = true
     iso_checksum = "none"
   }
 
   additional_iso_files {
-    type     = "ide"
-    index    = 3
-    iso_file = var.vm_virtio_iso
-    unmount  = true
-  }
-
-  additional_iso_files {
     type             = "ide"
-    index            = 2
+    index            = 1
     iso_storage_pool = var.proxmox_iso_storage_pool
     unmount          = true
     cd_files = [
       "./autounattend/${var.vm_os_version}-desktop/Autounattend.xml",
       "./scripts/pre-build/*",
     ]
-    cd_content = {
-      "ignore.txt" = "cd_files placeholder\n"
-    }
   }
 
+  additional_iso_files {
+    type     = "ide"
+    index    = 2
+    iso_file = var.vm_virtio_iso
+    unmount  = true
+    iso_checksum = "none"
+  }
+
+  # Serial port for Cloudbase-Init logging besides a file-based log.
+  # Useful for debugging, when you cannot log into the VM because cloud-init processing went wrong.
+  serials = ["socket"]
+
+  cloud_init              = true
+  cloud_init_disk_type    = "ide"
+  cloud_init_storage_pool = var.proxmox_storage_pool
+
   boot_wait    = "10s"
-  boot_command = ["<enter>"]
+  boot_command = ["<enter><wait1s><enter><wait1s><enter><wait1s><enter><wait1s><enter>"]
 
   communicator   = "winrm"
   winrm_username = local.winrm_username
@@ -104,7 +113,7 @@ source "proxmox-iso" "win2022_desktop" {
 
   machine    = "q35"
   bios       = "ovmf"
-  cpu_type   = "x86-64-v2-AES"
+  cpu_type   = "x86-64-v4"
   cores      = var.vm_cpu_cores
   memory     = var.vm_memory
   os         = "win11"
@@ -115,7 +124,7 @@ source "proxmox-iso" "win2022_desktop" {
   efi_config {
     efi_storage_pool  = var.proxmox_storage_pool
     efi_type          = "4m"
-    pre_enrolled_keys = false
+    pre_enrolled_keys = true
   }
 
   network_adapters {
@@ -134,36 +143,45 @@ source "proxmox-iso" "win2022_desktop" {
     ssd          = true
   }
 
+  boot = "order=ide0;scsi0"
+
   boot_iso {
     type         = "ide"
+    index        = 0
     iso_file     = var.vm_boot_iso
     unmount      = true
     iso_checksum = "none"
   }
 
   additional_iso_files {
-    type     = "ide"
-    index    = 3
-    iso_file = var.vm_virtio_iso
-    unmount  = true
-  }
-
-  additional_iso_files {
     type             = "ide"
-    index            = 2
+    index            = 1
     iso_storage_pool = var.proxmox_iso_storage_pool
     unmount          = true
     cd_files = [
       "./autounattend/${var.vm_os_version}-desktop/Autounattend.xml",
       "./scripts/pre-build/*",
     ]
-    cd_content = {
-      "ignore.txt" = "cd_files placeholder\n"
-    }
   }
 
+  additional_iso_files {
+    type     = "ide"
+    index    = 2
+    iso_file = var.vm_virtio_iso
+    unmount  = true
+    iso_checksum = "none"
+  }
+
+  # Serial port for Cloudbase-Init logging besides a file-based log.
+  # Useful for debugging, when you cannot log into the VM because cloud-init processing went wrong.
+  serials = ["socket"]
+
+  cloud_init              = true
+  cloud_init_disk_type    = "ide"
+  cloud_init_storage_pool = var.proxmox_storage_pool
+
   boot_wait    = "10s"
-  boot_command = ["<enter>"]
+  boot_command = ["<enter><wait1s><enter><wait1s><enter><wait1s><enter><wait1s><enter>"]
 
   communicator   = "winrm"
   winrm_username = local.winrm_username
