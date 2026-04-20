@@ -14,11 +14,6 @@ manifest.json
 pkrvars/*.pkrvars.hcl
 !pkrvars/*.pkrvars.hcl.example
 
-# VirtIO WinPE drivers (binary blobs from virtio-win ISO)
-winpe-drivers/*
-!winpe-drivers/README.md
-!winpe-drivers/.gitkeep
-
 # Editor / OS
 .DS_Store
 Thumbs.db
