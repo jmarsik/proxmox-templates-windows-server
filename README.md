@@ -9,11 +9,11 @@ Setting username via cloud-init (`--ciuser`) doesn't work out of the box, becaus
 ## Prerequisites
 
 - Proxmox VE 9 host with API reachable.
-- Proxmox API token for an automation user (`packer@pve!packer`) with sufficient permissions.
+- Proxmox API token for an automation user (like `packer@pve!packer`) with sufficient permissions.
 - Uploaded to an ISO datastore:
-  - Windows Server 2022 ISO (eval or licensed).
-  - Windows Server 2025 ISO.
-  - VirtIO drivers ISO ≥ `virtio-win-0.1.240`.
+  - Windows Server 2022 ISO
+  - Windows Server 2025 ISO
+  - VirtIO drivers ISO ≥ `virtio-win-0.1.240`
 - Local machine with [pixi](https://pixi.sh) installed.
 
 ## Quick start
@@ -59,7 +59,17 @@ slmgr.vbs /dlv
 slmgr.vbs /upk
 ```
 
-Modern Windows Server ISO images (2022, 2025) contain multiple editions, and the edition is selected during installation by entering a product key or from a list. Given product key can change Retail ISO variant to MAK activated one, and vice versa.
+Modern Windows Server ISO images (2022, 2025) contain multiple editions, and the edition is selected during template creation by Packer (see `pkrvars/*.pkrvars.hcl` variable `vm_os_edition`).
+
+The product key given when activating the cloned VM will automatically switch variant to Retail, MAK or KMS, depending on the type of the key, so you can use the same template for all three activation types.
+
+For evaluation ISOs, you need to convert the cloned VM from Eval to Retail, and at the same time activate it with either Retail, MAK or KMS key:
+
+```powershell
+dism.exe /Online /Set-Edition:ServerDatacenter /AcceptEula /ProductKey:<key>
+# or
+dism.exe /Online /Set-Edition:ServerStandard /AcceptEula /ProductKey:<key>
+```
 
 ## Cloud-init resources
 
