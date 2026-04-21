@@ -20,7 +20,7 @@ build {
     filters = [
       "exclude:$_.Title -like '*Preview*'",
       # TODO: remove... is there just to speed up testing
-      "exclude:$_.Title -like '*KB5082142*'",  # W2022
+      #"exclude:$_.Title -like '*KB5082142*'",  # W2022
       "exclude:$_.Title -like '*KB5082063*'",  # W2025
       "exclude:$_.InstallationBehavior.CanRequestUserInput -eq $true",
       "include:$true",

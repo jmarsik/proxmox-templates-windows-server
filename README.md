@@ -1,4 +1,4 @@
-# Lekis-ProxmoxTemplates
+# Proxmox templates for Windows Server
 
 Packer automation that builds cloud-init-ready **Windows Server 2022 Desktop** and **Windows Server 2025 Desktop** golden templates on **Proxmox VE 9** using **Cloudbase-Init**.
 
@@ -46,6 +46,20 @@ qm start 210
 Cloudbase-Init applies settings ~2–3 min after first boot.
 
 **It's important to remove the `CloudInit Drive` hardware component (via UI or `qm`) after the first boot, otherwise it can cause issues with subsequent boots (re-applying some settings).**
+
+# Licensing
+
+Use following commands to manage Windows activation status and product key:
+
+```powershell
+# Check activation status, product key, etc.
+slmgr.vbs /dlv
+
+# Uninstall product key and deactivate Windows.
+slmgr.vbs /upk
+```
+
+Modern Windows Server ISO images (2022, 2025) contain multiple editions, and the edition is selected during installation by entering a product key or from a list. Given product key can change Retail ISO variant to MAK activated one, and vice versa.
 
 ## Cloud-init resources
 

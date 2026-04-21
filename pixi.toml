@@ -1,7 +1,7 @@
 [workspace]
 authors = ["Jakub Marsik <jmarsik@fullvent.cz>"]
 channels = ["conda-forge", "hcc"]
-name = "Lekis-ProxmoxTemplates"
+name = "proxmox-templates-windows-server"
 platforms = ["linux-64"]
 version = "0.1.0"
 
