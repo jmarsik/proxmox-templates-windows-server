@@ -21,7 +21,7 @@ build {
       "exclude:$_.Title -like '*Preview*'",
       # TODO: remove... is there just to speed up testing
       #"exclude:$_.Title -like '*KB5082142*'",  # W2022
-      "exclude:$_.Title -like '*KB5082063*'",  # W2025
+      #"exclude:$_.Title -like '*KB5082063*'",  # W2025
       "exclude:$_.InstallationBehavior.CanRequestUserInput -eq $true",
       "include:$true",
     ]
@@ -84,9 +84,9 @@ build {
   # This is VERY IMPORTANT, because the next provisioner runs sysprep, which HAS TO run
   #  in the interactive desktop session.
   provisioner "shell-local" {
-    pause_before = "60s"
+    pause_before = "120s"
     inline = [
-      "echo 'Waiting for VM to complete sysprep and shutdown completed.'",
+      "echo 'Waiting for VM to settle before sysprep completed.'",
     ]
   }
 
@@ -102,7 +102,7 @@ build {
   # This just waits for the VM to complete sysprep and then shutdown on its own,
   #  which Packer then detects and continues correctly.
   provisioner "shell-local" {
-    pause_before = "60s"
+    pause_before = "120s"
     inline = [
       "echo 'Waiting for VM to complete sysprep and shutdown completed.'",
     ]

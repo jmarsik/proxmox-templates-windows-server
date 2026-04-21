@@ -12,7 +12,7 @@ source "proxmox-iso" "win2025_desktop" {
   vm_id                = var.vm_template_vmid
   vm_name              = var.vm_name
   template_name        = var.vm_name
-  template_description = "Packer build — Windows Server ${var.vm_os_version} ${var.vm_os_edition}"
+  template_description = "Packer build ${formatdate("YYYYMMDD", timestamp())}\n\nWindows Server ${var.vm_os_version} ${var.vm_os_edition}\n\n${regex("[^/]+$", var.vm_boot_iso)}"
   pool                 = "Templates"
   tags                 = "packer;windows;win${var.vm_os_version};desktop"
 
@@ -107,7 +107,7 @@ source "proxmox-iso" "win2022_desktop" {
   vm_id                = var.vm_template_vmid
   vm_name              = var.vm_name
   template_name        = var.vm_name
-  template_description = "Packer build — Windows Server ${var.vm_os_version} ${var.vm_os_edition}"
+  template_description = "Packer build ${formatdate("YYYYMMDD", timestamp())}\n\nWindows Server ${var.vm_os_version} ${var.vm_os_edition}\n\n${regex("[^/]+$", var.vm_boot_iso)}"
   pool                 = "Templates"
   tags                 = "packer;windows;win${var.vm_os_version};desktop"
 
