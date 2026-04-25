@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+# runs xorriso tool as if it was installed on the system, but actually it is run via pixi exec command
+# normally we would just add xorriso to the dependencies, but it's kinda old and not compatible with
+#  python 3.13 and a lot of other packages, so we just run it
+exec pixi exec -c conda-forge -c hcc --no-progress --quiet xorriso "$@"

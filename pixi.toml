@@ -11,6 +11,12 @@ nodejs = "20.18.*"
 packer = ">=1.11"
 jq = "*"
 
+[activation.env]
+# contains "xorriso" pixi-exec-based script that runs xorriso tool as if it was installed on the system
+# normally we would just add xorriso to the dependencies, but it's kinda old and not compatible with
+#  python 3.13 and a lot of other packages
+PATH = "$PIXI_PROJECT_ROOT/tools:$PATH"
+
 [tasks]
 init = "packer init ."
 fmt = "packer fmt -recursive ."
