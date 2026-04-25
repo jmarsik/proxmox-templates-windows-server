@@ -17,6 +17,9 @@ jq = "*"
 #  python 3.13 and a lot of other packages
 PATH = "$PIXI_PROJECT_ROOT/tools:$PATH"
 
+[activation]
+scripts = ["tools/load-env.sh"]
+
 [tasks]
 init = "packer init ."
 fmt = "packer fmt -recursive ."

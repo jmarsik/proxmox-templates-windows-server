@@ -21,12 +21,14 @@ Cloned VMs get hostname, admin user password, SSH public keys, network config an
 ```bash
 pixi install
 
+# first time only, to create .env file with Proxmox API credentials
+cp .env.example .env
+$EDITOR .env  # set PKR_VAR_proxmox_api_username and PKR_VAR_proxmox_api_token with your Proxmox API token credentials
+
 # first time per variant
 cp pkrvars/2025-desktop.pkrvars.hcl.example pkrvars/2025-desktop.pkrvars.hcl
 # set proxmox_url, node, storage, username, network bridge, ISOs, template parameters
 $EDITOR pkrvars/2025-desktop.pkrvars.hcl
-
-export PKR_VAR_proxmox_api_token='<token-secret>'
 
 ./build.sh 2025-desktop  # or: pixi run build-2025
 ./build.sh 2022-desktop  # or: pixi run build-2022

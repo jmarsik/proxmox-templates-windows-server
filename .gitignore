@@ -19,3 +19,6 @@ pkrvars/*.pkrvars.hcl
 Thumbs.db
 .vscode/
 .idea/
+
+# Secrets
+.env

@@ -13,8 +13,8 @@ proxmox_url              = "https://pve01.lan:8006/api2/json"
 proxmox_node             = "pve01"
 proxmox_storage_pool     = "local-zfs"
 proxmox_iso_storage_pool = "local"
-proxmox_username         = "packer@pve!packer"
 proxmox_skip_tls_verify  = true
 vm_bridge                = "vmbr0"
 
+# proxmox_username is read from PKR_VAR_proxmox_username env var
 # proxmox_api_token is read from PKR_VAR_proxmox_api_token env var
